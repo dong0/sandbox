@@ -13,10 +13,10 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Create a File
-        run: echo "hello from ${{ matrix.runner }}" >> $GITHUB_ENV
+        run: echo "hello from ${{ matrix.runner }}" > allure-results
       - name: Upload allure results
         uses: actions/upload-artifact@v4
         with:
-          name: allure_results_${{ matrix.runs-on }}
+          name: allure_results_${{ matrix.runner }}
           path: allure-results
           if-no-files-found: ignore
