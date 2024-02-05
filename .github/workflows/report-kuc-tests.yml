@@ -1,0 +1,28 @@
+name: KUC test allure report
+
+on:
+  workflow_call:
+
+jobs:
+  generate-allure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download allure_results_ubuntu-latest
+        id: download-allure-ubuntu-latest
+        uses: actions/download-artifact@v4
+        with:
+          name: allure_results_ubuntu-latest
+          path: allure-results
+      - name: Download allure_results_macos-latest
+        id: download-allure-macos-latest
+        uses: actions/download-artifact@v4
+        with:
+          name: allure_results_macos-latest
+          path: allure-results
+      - name: Download allure_results_windows-latest
+        id: download-allure-windows-latest
+        uses: actions/download-artifact@v4
+        with:
+          name: allure_results_windows-latest
+          path: allure-results
+      - run: ls -R allure-results

@@ -1,0 +1,14 @@
+name: KUC test preparation and test automation using self-hosted runner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    uses: ./.github/workflows/execute-kuc-tests.yml
+
+  report:
+    name: Report
+    needs: [ test ]
+    uses: ./.github/workflows/report-kuc-tests.yml
